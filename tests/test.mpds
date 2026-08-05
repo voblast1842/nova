@@ -40,13 +40,13 @@ v bad_math = distance + time
 
 // Reassignment
 distance = 25 [m] // Nothing.
-gravity = 10 [m=s^2] // Error!
+gravity = 10 [m/s^2] // Error!
 
 v mass = 5 [kg]
 v force = mass * gravity // [kg*m/s^2] (Newtons)
 log.out("Force required: @")[force]
 
-// This loop is optional, because of the built in function _update(delta)
+// This loop is optional, because of the built in fn _update(delta)
 v t = 0 [s]
 v dt = 0.1 [s]
 
@@ -65,21 +65,21 @@ v dict = {
 }
 v Great = dict["a"] + array[2] // would be 6
 
-function add(a, b) {
+fn add(a, b) {
     return a + b
 }
 
-function _update(dt) {
+fn _update(dt) {
    log.out(dt) // Prints the delta-time.
 }
 
 v vec = (2, 2, 2) // automatically becomes a vector3
 v vec2 = (2, 2) // automatically becomes a vector2
-v matrix (4, 4 | 4, 4) // this becomes a matrix
+v matrix = (4, 4 | 4, 4) // this becomes a matrix
 
 log.out(matrix)
 
-v matrix2 (4, 4 | 4, 4) | (1, 2 | 3, 4 | 5, 6)
+v matrix2 = (4, 4 | 4, 4) | (1, 2 | 3, 4 | 5, 6)
 
 log.out(matrix2)
 

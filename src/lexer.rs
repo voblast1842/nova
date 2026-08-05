@@ -19,6 +19,26 @@ pub enum Token {
     ConstKeyword,
     IfKeyword,
     ElseKeyword,
+    OpenBrace,
+    ClosedBrace,
+    Comma,
+    FuncKeyword,
+    ReturnKeyword,
+    Less,
+    Greater,
+    LessEqual,
+    GreaterEqual,
+    NotEqual,
+    WhileKeyword,
+    ForKeyword,
+    Dot,
+    Caret,
+    And,
+    Or,
+    Not,
+    OpenBracket,
+    ClosedBracket,
+    Log,
 }
 
 pub fn lex(source_code: &str) -> Vec<Token> {
@@ -65,12 +85,69 @@ pub fn lex(source_code: &str) -> Vec<Token> {
                     tokens.push(Token::Equal);
                 }
             }
+            '&' => {
+                chars.next();
+                if let Some(&'&') = chars.peek() {
+                    chars.next();
+                    tokens.push(Token::And);
+                }
+            }
+            '~' => {
+                chars.next();
+                if let Some(&'~') = chars.peek() {
+                    chars.next();
+                    tokens.push(Token::And);
+                }
+            }
+            '|' => {
+                chars.next();
+                if let Some(&'|') = chars.peek() {
+                    chars.next();
+                    tokens.push(Token::And);
+                }
+            }
             '(' => {
                 tokens.push(Token::OpenParen);
                 chars.next();
             }
             ')' => {
                 tokens.push(Token::ClosedParen);
+                chars.next();
+            }
+            '{' => {
+                tokens.push(Token::OpenBrace);
+                chars.next();
+            }
+            '}' => {
+                tokens.push(Token::ClosedBrace);
+                chars.next();
+            }
+            '[' => {
+                tokens.push(Token::OpenBracket);
+                chars.next();
+            }
+            ']' => {
+                tokens.push(Token::ClosedBracket);
+                chars.next();
+            }
+            ',' => {
+                tokens.push(Token::Comma);
+                chars.next();
+            }
+            '<' => {
+                tokens.push(Token::Less);
+                chars.next();
+            }
+            '>' => {
+                tokens.push(Token::Greater);
+                chars.next();
+            }
+            '.' => {
+                tokens.push(Token::Dot);
+                chars.next();
+            }
+            '^' => {
+                tokens.push(Token::Caret);
                 chars.next();
             }
             '0'..='9' => {
@@ -119,8 +196,13 @@ pub fn lex(source_code: &str) -> Vec<Token> {
                 }
 
                 match ident_str.as_str() {
-                    "var" => tokens.push(Token::VarKeyword),
-                    "con" => tokens.push(Token::ConstKeyword),
+                    "let" => tokens.push(Token::VarKeyword),
+                    "letc" => tokens.push(Token::ConstKeyword),
+                    "fn" => tokens.push(Token::FuncKeyword),
+                    "wh" => tokens.push(Token::WhileKeyword),
+                    "log" => tokens.push(Token::Log),
+                    "for" => tokens.push(Token::ForKeyword),
+                    "ret" => tokens.push(Token::ReturnKeyword),
                     "if" => tokens.push(Token::IfKeyword),
                     "else" => tokens.push(Token::ElseKeyword),
 
