@@ -1,0 +1,17 @@
+// basic.mpds Wish us luck!
+
+var a = 1
+var b = 2
+
+con c = 3
+
+a + a
+a + b
+a + c
+b + b
+b + c
+c + c
+a / c
+a * b
+
+a + b + c

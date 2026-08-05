@@ -1,0 +1,95 @@
+// test.mpds
+
+// Define quantities with units
+v distance = 10 [m]
+v time = 9.87 [s]
+
+// Calculate velocity (units resolve to m/s automatically)
+v speed = distance / time
+
+// Constants that CAN'T be changed.
+c gravity = 9.81 [m/s^2]
+
+// Predetermined constants
+l pi[6] = pi // l means load, [6] means 6 digits. [1] would be 3, [2] would be 3.1, etc...
+l euler_number[6] = e
+l golden_ratio = gr
+
+log.out("Speed is @ and gravity is @")[speed, gravity] // This will print Speed is 1.01317123 m/s and gravity is 9.81 m/s^2
+log.out("Amazing! Euler's number is @, pi is @ and the golden ratio is @!")[e,pi,gr] // This will print Amazing! Euler's number is ~2.71828, pi is 3.14159 and the golden ratio is 1.618!
+
+v a = 2
+v b = 3
+
+if  (a + b) == 5 {
+    log.out("Nice!") // will print nice because a + b = 5
+}
+
+if (b + a) == 4 {log.out("Sweet!")} else {log.warn("Unfortunate")} // will print unfortunate because b + a != 4
+_______________
+
+OUTPUT:
+(17:08:54.000) Speed is 1.01317123 m/s and gravity is 9.81 m/s^2
+(17:08:54.032) Amazing! Euler's number is ~2.71828, pi is 3.14159 and the golden ratio is 1.618!
+(17:08:54.037) Nice!
+(17:08:54.085) Unfortunate
+_______________
+
+// Triggers a runtime unit error (cannod add length and time)
+v bad_math = distance + time
+
+// Reassignment
+distance = 25 [m] // Nothing.
+gravity = 10 [m=s^2] // Error!
+
+v mass = 5 [kg]
+v force = mass * gravity // [kg*m/s^2] (Newtons)
+log.out("Force required: @")[force]
+
+// This loop is optional, because of the built in function _update(delta)
+v t = 0 [s]
+v dt = 0.1 [s]
+
+while t < 1 [s] {
+    t = t + dt
+}
+log.out("Final time: @")[t]
+
+v c = 1
+v array = [1, 2, 3, 4, 5]
+v j = array + c // Error! You can't add an array and a number.
+v Great! = c + array // Error! You can't have ! in a variable name.
+v dict = {
+   ["a"] = 4,
+   ["b"] = 5,
+}
+v Great = dict["a"] + array[2] // would be 6
+
+function add(a, b) {
+    return a + b
+}
+
+function _update(dt) {
+   log.out(dt) // Prints the delta-time.
+}
+
+v vec = (2, 2, 2) // automatically becomes a vector3
+v vec2 = (2, 2) // automatically becomes a vector2
+v matrix (4, 4 | 4, 4) // this becomes a matrix
+
+log.out(matrix)
+
+v matrix2 (4, 4 | 4, 4) | (1, 2 | 3, 4 | 5, 6)
+
+log.out(matrix2)
+
+_____________________
+
+the matrix log would be:
+[ 4 4 ]
+[ 4 4 ]
+
+the matrix2 log would be:
+[ 4 4 ] [ 1 2 ]
+[ 4 4 ] [ 3 4 ]
+        [ 5 6 ]
