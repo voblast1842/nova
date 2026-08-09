@@ -1,8 +1,5 @@
-// src/lexer.rs
-
 #[derive(Debug)]
 #[allow(dead_code)]
-
 pub enum Token {
     Plus,
     Minus,
@@ -50,6 +47,15 @@ pub fn lex(source_code: &str) -> Vec<Token> {
             ' ' | '\t' | '\r' | '\n' => {
                 chars.next();
             }
+            '#' => {
+                chars.next();
+                while let Some(&comment_ch) = chars.peek() {
+                    if comment_ch == '\n' {
+                        break;
+                    }
+                    chars.next();
+                }
+            }
             '+' => {
                 tokens.push(Token::Plus);
                 chars.next();
@@ -63,18 +69,8 @@ pub fn lex(source_code: &str) -> Vec<Token> {
                 chars.next();
             }
             '/' => {
+                tokens.push(Token::Divide);
                 chars.next();
-                if let Some(&'/') = chars.peek() {
-                    chars.next();
-                    while let Some(&comment_ch) = chars.peek() {
-                        if comment_ch == '\n' {
-                            break;
-                        }
-                        chars.next();
-                    }
-                } else {
-                    tokens.push(Token::Divide);
-                }
             }
             '=' => {
                 chars.next();
@@ -96,14 +92,17 @@ pub fn lex(source_code: &str) -> Vec<Token> {
                 chars.next();
                 if let Some(&'~') = chars.peek() {
                     chars.next();
-                    tokens.push(Token::And);
+                    tokens.push(Token::Not);
+                } else if let Some(&'=') = chars.peek() {
+                    chars.next();
+                    tokens.push(Token::NotEqual);
                 }
             }
             '|' => {
                 chars.next();
                 if let Some(&'|') = chars.peek() {
                     chars.next();
-                    tokens.push(Token::And);
+                    tokens.push(Token::Or);
                 }
             }
             '(' => {
@@ -135,12 +134,22 @@ pub fn lex(source_code: &str) -> Vec<Token> {
                 chars.next();
             }
             '<' => {
-                tokens.push(Token::Less);
                 chars.next();
+                if let Some(&'=') = chars.peek() {
+                    chars.next();
+                    tokens.push(Token::LessEqual);
+                } else {
+                    tokens.push(Token::Less);
+                }
             }
             '>' => {
-                tokens.push(Token::Greater);
                 chars.next();
+                if let Some(&'=') = chars.peek() {
+                    chars.next();
+                    tokens.push(Token::GreaterEqual);
+                } else {
+                    tokens.push(Token::Greater);
+                }
             }
             '.' => {
                 tokens.push(Token::Dot);

@@ -1,0 +1,6 @@
+# basic2.mpds In god we trust!
+
+let a = [1, 2]
+let b = [3, 4]
+
+a + b
