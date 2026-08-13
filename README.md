@@ -15,11 +15,11 @@ Currently under development, it **WILL** provide software for simulating:
 ## Project milestones
 Active development tasks, upcoming features, and milestones **WILL BE** tracked publicly. (see above)
 
-- Molecular bond simulation
-- Individual atom simulation
-- Compound simulation
-- Dynamic level of detail
-- Scriptable workflows
+- [] Molecular bond simulation
+- [] Individual atom simulation
+- [] Compound simulation
+- [] Dynamic level of detail
+- [] Scriptable workflows
 
 ## Physics & Mathematical Models
 
