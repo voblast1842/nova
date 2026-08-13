@@ -1,19 +1,24 @@
 # MPDS
 
-Molecular Physics Dynamics Software (MPDS) is a high-performance simulation and computation engine designed for general physics, molecular dynamics, and mathematical modeling. MPDS delivers real-time visualization and numerical solving for complex systems.
+Molecular Physics Dynamics Software (MPDS) **WILL BE** a high-performance simulation and computation engine designed for molecular dynamics modeling. MPDS **WILL** deliver real-time visualization and numerical solving for complex systems.
 
-Currently under development, it will provide the following:
+Currently under development, it **WILL** provide software for simulating:
 
-* **General Physics Engine:** Simulates classical mechanics, multi-body systems, fluid dynamics, and molecular structures.
-* **Mathematical Solver:** High-performance matrix operations, differential equation integration, and coordinate transformations.
-* **Fluid Dynamics**: Simulates fluids and gases for airflow testing.
-* **CAD Support**: Able to import CAD models and simulate with them for structural engineering, thermal management, ...
+- **Molecular Bonds** and electron sharing, atomic charge, and energy changes.
+- **Individiual atom simulation** for simulating complex bonds.
+- **Compound simulation** for simulating advanced compounds.
+- **LOD** for performance boosts. (Zooming out condenses atoms into an average)
+
+## Physics & Mathematical Models
+
+- Lennard-Jones potential & Electrostatic forces.
+- Harmonic bond/angle potentials or Morse potentials.
 
 ## Architecture
 
 * **Backend:** Written in rust, for memory safety, fast speeds and compile time safety.
-* **Compute:** Written in GLSL/Vulkan for GPU-bound heavy math pipelines.
-* **Frontend:** Written in Svelte for real-time visualization and user configuration.
+* **Compute:** **WILL BE** written in GLSL/Vulkan for GPU-bound heavy math pipelines.
+* **Frontend:** **WILL BE** written in Svelte for real-time visualization and user configuration.
 
 ## License
 
