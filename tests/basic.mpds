@@ -1,6 +1,0 @@
-# basic.mpds Wish us luck!
-
-let a = 1.2
-let b = 1.3
-
-a + b

@@ -1,0 +1,23 @@
+[package]
+name = "mpds"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+slint = "1.8"
+
+wgpu = "30.0.0"
+winit = "0.30"
+rayon = "1.10"
+pdbtbx = "0.12.0"
+pollster = "1.0.1"
+
+bytemuck = { version = "1.16", features = ["derive"] }
+
+[build-dependencies]
+slint-build = "1.8"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
