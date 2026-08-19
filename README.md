@@ -1,6 +1,6 @@
 # Nova
 
-Nova is an open-source, high-performance molecular dynamics and physics software
+Nova is an open-source, high-performance molecular dynamics and physics software powered by the LightbulbPSS engine.
 
 ## License
 
